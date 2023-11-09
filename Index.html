@@ -1,0 +1,139 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Generator</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <h1>PDF Letter Generation</h1>
+    <form id="pdfForm">
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" accept="image/*" required><br>
+        
+        <div class="sender-details">
+            <label for="senderName">Sender's Name:</label>
+            <input type="text" id="senderName" required><br>
+            <label for="senderAddress">Sender's Address:</label>
+            <input type="text" id="senderAddress" required><br>
+            <label for="senderNumber">Sender's Number:</label>
+            <input type="text" id="senderNumber" required><br>
+            <label for="date">Date:</label>
+            <input type="text" id="date" required><br>
+        </div>
+        
+        <hr> 
+        
+        <label for="receiverName">Receiver's Name:</label>
+        <input type="text" id="receiverName" required><br>
+        <label for="receiverAddress">Receiver's Address:</label>
+        <input type="text" id "receiverAddress" required><br>
+        <label for="receiverOccupation">Receiver's Occupation:</label>
+        <input type="text" id="receiverOccupation" required><br>
+        
+        <hr> 
+        
+        <div class="center-align">
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" required><br>
+        </div>
+        
+        <hr>
+        
+        <label for="letterContent">Content:</label>
+        <textarea id="letterContent" rows="10" cols="40" required></textarea><br>
+        
+        <button type="button" id="generatePDF">Generate PDF</button>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script>
+        document.getElementById('generatePDF').addEventListener('click', function() {
+            const image = document.getElementById('image').files[0];
+            const senderName = document.getElementById('senderName').value;
+            const senderAddress = document.getElementById('senderAddress').value;
+            const senderNumber = document.getElementById('senderNumber').value;
+            const date = document.getElementById('date').value;
+            const receiverName = document.getElementById('receiverName').value;
+            const receiverAddress = document.getElementById('receiverAddress').value;
+            const receiverOccupation = document.getElementById('receiverOccupation').value;
+            const subject = document.getElementById('subject').value;
+            const letterContent = document.getElementById('letterContent').value;
+
+            const pdf = new jspdf.jsPDF();
+
+            if (image) {
+                pdf.addImage(URL.createObjectURL(image), 'JPEG', 15, 15, 180, 120);
+            }
+
+            pdf.text(15, 150, letterText);
+            
+            // Add sender's information
+            pdf.text(15, 180, `Sender's Name: ${senderName}`);
+            pdf.text(15, 190, `Sender's Address: ${senderAddress}`);
+            pdf.text(15, 200, `Sender's Number: ${senderNumber}`);
+            pdf.text(15, 210, `Date: ${date}`);
+            
+            // Add receiver's information
+            pdf.text(15, 230, `Receiver's Name: ${receiverName}`);
+            pdf.text(15, 240, `Receiver's Address: ${receiverAddress}`);
+            pdf.text(15, 250, `Receiver's Occupation: ${receiverOccupation}`);
+            
+            // Add subject and content
+            pdf.text(15, 270, `Subject: ${subject}`);
+            pdf.text(15, 290, 'Content:');
+            pdf.text(15, 300, letterContent);
+
+            pdf.save('generated.pdf');
+        });
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Generator</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <h1>PDF Letter Generation</h1>
+    <form id="pdfForm">
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" accept="image/*" required><br>
+        
+        <hr> 
+        
+        <div class="center-align">
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" required><br>
+        </div>
+        
+        <hr>
+        
+        <label for="letterContent">Content:</label>
+        <textarea id="letterContent" rows="10" cols="40" required></textarea><br>
+        
+        <button type="button" id="generatePDF">Generate PDF</button>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script>
+        document.getElementById('generatePDF').addEventListener('click', function() {
+            const image = document.getElementById('image').files[0];
+            const letterContent = document.getElementById('letterContent').value;
+
+            const pdf = new jspdf.jsPDF();
+
+            if (image) {
+                pdf.addImage(URL.createObjectURL(image), 'JPEG', 15, 15, 180, 120);
+            }
+            
+            pdf.text(15, 270, `Subject: ${subject}`);
+            pdf.text(15, 290, 'Content:');
+            pdf.text(15, 300, letterContent);
+
+            pdf.save('generated.pdf');
+        });
+    </script>
+</body>
+</html>
+
